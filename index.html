@@ -9,7 +9,7 @@
         :root{
             --bg:#08080c;--s1:#101016;--s2:#18181f;--s3:#222230;
             --bd:#1e1e2e;--bd2:#2a2a3d;
-            --tx:#d4d4e0;--tx2:#6e6e8a;--tx3:#4a4a62;
+            --tx:#d4d4e0;--tx2:#7c7c9a;--tx3:#4a4a62;
             --ac:#635bff;--ac2:#8b83ff;--ac3:#a78bfa;
             --gn:#10b981;--rd:#ef4444;
             --g1:linear-gradient(135deg,#635bff,#a78bfa);
@@ -37,14 +37,14 @@
         .btn-d{color:var(--rd);border-color:rgba(239,68,68,.2)}
         .btn-d:hover{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.4)}
         .btn-s{padding:3px 8px;font-size:.75rem}
-        .btn-g{background:var(--gn);border-color:transparent;color:#fff}
+        .btn-w{color:var(--gn);border-color:rgba(16,185,129,.2)}
+        .btn-w:hover{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.4)}
 
         .layout{display:flex;height:calc(100vh - 48px);height:calc(100dvh - 48px)}
 
         .sb{width:240px;min-width:240px;background:var(--s1);border-right:1px solid var(--bd);display:flex;flex-direction:column;overflow:hidden}
         .sb-sec{padding:10px 10px 6px}
         .sb-t{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--tx3);margin-bottom:4px;padding:0 6px;font-weight:600}
-        .sb-search{position:relative}
         .sb-search input{width:100%;padding:7px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);font-size:.82rem;outline:none;transition:var(--tr)}
         .sb-search input::placeholder{color:var(--tx3)}
         .sb-search input:focus{border-color:var(--ac);box-shadow:0 0 0 2px rgba(99,91,255,.1)}
@@ -73,7 +73,7 @@
         .cat-i.on{background:rgba(99,91,255,.08);color:var(--ac2)}
         .cat-i.drag-over{box-shadow:0 -2px 0 0 var(--ac) inset}
         .cat-i.drag-over-below{box-shadow:0 2px 0 0 var(--ac) inset}
-        .cat-i.dragging{opacity:.4;background:var(--s3)}
+        .cat-i.dragging{opacity:.4}
         .cat-grip{cursor:grab;color:var(--tx3);font-size:.7rem;padding:2px;display:flex;align-items:center;flex-shrink:0;opacity:0;transition:opacity .15s}
         .cat-i:hover .cat-grip{opacity:1}
         .cat-grip:active{cursor:grabbing}
@@ -87,21 +87,32 @@
         .cat-ab{background:none;border:none;color:var(--tx3);cursor:pointer;padding:2px 3px;font-size:.65rem;border-radius:3px;transition:var(--tr)}
         .cat-ab:hover{color:var(--tx);background:var(--s3)}
 
-        /* Drag placeholder */
-        .drag-placeholder{height:32px;border:1px dashed var(--ac);border-radius:6px;margin:2px 0;background:rgba(99,91,255,.04);transition:all .15s}
+        /* Trash item */
+        .cat-i.trash-item{border-top:1px solid var(--bd);margin-top:4px;padding-top:8px}
+        .cat-i.trash-item .cat-n{color:var(--rd)}
+        .cat-i.trash-item.on .cat-n{color:var(--rd)}
 
-        /* Touch drag ghost */
         .drag-ghost{position:fixed;z-index:9999;pointer-events:none;background:var(--s2);border:1px solid var(--ac);border-radius:6px;padding:6px 10px;font-size:.82rem;color:var(--ac2);box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:.9;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
         .stats{padding:6px 12px;border-top:1px solid var(--bd);font-size:.65rem;color:var(--tx3);display:flex;gap:10px}
 
         .main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-        .tb{padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:40px;border-bottom:1px solid var(--bd);background:var(--s1)}
-        .tb-l{display:flex;align-items:center;gap:8px;min-width:0}
+        .tb{padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:40px;border-bottom:1px solid var(--bd);background:var(--s1);gap:8px}
+        .tb-l{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
         .tb-cat{font-size:.88rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx)}
         .tb-cnt{font-size:.7rem;color:var(--tx3)}
+        .tb-r{display:flex;align-items:center;gap:6px;flex-shrink:0}
         .tb-sort{padding:4px 8px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;color:var(--tx2);font-size:.75rem;outline:none;cursor:pointer}
         .tb-sort:focus{border-color:var(--ac)}
+
+        /* Section divider in grid */
+        .section-div{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:8px 0 4px}
+        .section-line{flex:1;height:1px;background:var(--bd2)}
+        .section-name{font-size:.78rem;font-weight:600;color:var(--ac2);white-space:nowrap}
+        .section-acts{display:flex;gap:4px;opacity:0;transition:opacity .15s}
+        .section-div:hover .section-acts{opacity:1}
+        .section-abtn{background:none;border:none;color:var(--tx3);cursor:pointer;font-size:.65rem;padding:2px 4px;border-radius:3px;transition:var(--tr)}
+        .section-abtn:hover{color:var(--tx);background:var(--s3)}
 
         .grid{flex:1;overflow-y:auto;padding:12px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px;align-content:start}
 
@@ -109,6 +120,8 @@
         .card::after{content:'';position:absolute;inset:-1px;border-radius:10px;background:var(--g1);opacity:0;transition:opacity .3s;z-index:-1}
         .card:hover{border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
         .card:hover::after{opacity:.15}
+        .card.in-trash{opacity:.6}
+        .card.in-trash:hover{opacity:.8}
         .card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
         .card-t{font-size:.88rem;font-weight:600;line-height:1.35;flex:1;word-break:break-word;color:var(--tx)}
         .tags{display:flex;gap:3px;flex-shrink:0;flex-wrap:wrap}
@@ -117,10 +130,12 @@
         .tag-ph{background:rgba(16,185,129,.1);color:var(--gn)}
         .tag-bt{background:rgba(167,139,250,.1);color:var(--ac3)}
         .tag-ai{background:rgba(244,114,182,.1);color:#f472b6}
+        .tag-sec{background:rgba(99,91,255,.08);color:var(--ac3);font-size:.58rem}
         .card-p{font-size:.78rem;color:var(--tx2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
         .card-m{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
         .card-tag{font-size:.65rem;padding:1px 6px;border-radius:3px;color:var(--tx3)}
         .card-dt{font-size:.65rem;color:var(--tx3);margin-left:auto}
+        .card-note{font-size:.76rem;color:#b8b8d0;background:rgba(99,91,255,.04);border-left:2px solid var(--ac);padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.5;white-space:pre-wrap;word-break:break-word}
         .card-act{display:flex;gap:3px;padding-top:8px;border-top:1px solid var(--bd)}
         .card-act .btn{flex:1;justify-content:center}
 
@@ -146,10 +161,22 @@
         .fi:focus{border-color:var(--ac);box-shadow:0 0 0 2px rgba(99,91,255,.1)}
         .ft{padding:8px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);font-size:.82rem;outline:none;resize:vertical;min-height:130px;font-family:'JetBrains Mono','Consolas','Monaco',monospace;line-height:1.65;transition:var(--tr)}
         .ft:focus{border-color:var(--ac);box-shadow:0 0 0 2px rgba(99,91,255,.1)}
+        .ft-note{min-height:60px;font-family:inherit;font-size:.84rem;color:#c8c8e0;line-height:1.6}
         .fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
         .fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+        .fr4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+
+        /* Color picker */
+        .color-row{display:flex;align-items:center;gap:8px}
+        .color-prev{width:32px;height:32px;border-radius:6px;border:2px solid var(--bd2);cursor:pointer;transition:var(--tr)}
+        .color-prev:hover{transform:scale(1.1)}
+        .fi-color{flex:1;padding:3px;height:36px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;cursor:pointer}
+        .fi-color::-webkit-color-swatch-wrapper{padding:2px}
+        .fi-color::-webkit-color-swatch{border:none;border-radius:4px}
 
         .vc{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:14px;font-family:'JetBrains Mono','Consolas',monospace;font-size:.8rem;line-height:1.7;white-space:pre-wrap;word-break:break-word;max-height:45vh;overflow-y:auto;color:var(--tx)}
+        .vw-note{background:rgba(99,91,255,.05);border:1px solid rgba(99,91,255,.15);border-radius:var(--r);padding:12px 14px;font-size:.84rem;color:#c8c8e0;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+        .vw-note-label{font-size:.7rem;font-weight:600;color:var(--ac2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
 
         .cc{text-align:center;padding:16px 0}
         .cc p{font-size:.84rem;color:var(--tx2);margin-top:6px}
@@ -166,13 +193,21 @@
         .sb-ov{display:none;position:fixed;inset:0;background:rgba(4,4,8,.6);z-index:49}
         .sb-ov.show{display:block}
 
+        /* Section manage in modal */
+        .sec-list{display:flex;flex-direction:column;gap:4px}
+        .sec-item{display:flex;align-items:center;gap:6px;padding:4px 8px;background:var(--s2);border-radius:6px;font-size:.82rem}
+        .sec-item .sec-nm{flex:1;color:var(--tx)}
+        .sec-item .sec-del{background:none;border:none;color:var(--tx3);cursor:pointer;font-size:.7rem;padding:2px 4px;border-radius:3px}
+        .sec-item .sec-del:hover{color:var(--rd);background:rgba(239,68,68,.08)}
+        .sec-add-row{display:flex;gap:4px;margin-top:4px}
+
         @media(max-width:768px){
             .menu-t{display:block}
             .sb{position:fixed;left:-260px;top:0;bottom:0;z-index:50;transition:left .25s cubic-bezier(.4,0,.2,1);width:250px;min-width:250px}
             .sb.open{left:0}
             .grid{grid-template-columns:1fr;padding:10px}
             .tb{padding:0 10px}
-            .fr,.fr3{grid-template-columns:1fr}
+            .fr,.fr3,.fr4{grid-template-columns:1fr}
             .h-right .hm{display:none}
             .mo-box{max-height:92vh;max-height:92dvh}
             .mo{padding:8px}
@@ -220,7 +255,6 @@
         <div class="cat-list" id="catL"></div>
         <div class="stats" id="sts"></div>
     </aside>
-
     <div class="sb-ov" id="sbOv" onclick="App.toggleSb()"></div>
 
     <main class="main">
@@ -229,17 +263,22 @@
                 <div class="tb-cat" id="tbCat">Tất cả</div>
                 <div class="tb-cnt" id="tbCnt"></div>
             </div>
-            <select class="tb-sort" id="tbSort" onchange="App.render()">
-                <option value="newest">Mới nhất</option>
-                <option value="oldest">Cũ nhất</option>
-                <option value="az">A → Z</option>
-                <option value="za">Z → A</option>
-            </select>
+            <div class="tb-r">
+                <button class="btn btn-s" id="secBtn" onclick="App.openSecMo()" style="display:none">Ngăn</button>
+                <select class="tb-sort" id="secFilter" onchange="App.render()" style="display:none"></select>
+                <select class="tb-sort" id="tbSort" onchange="App.render()">
+                    <option value="newest">Mới nhất</option>
+                    <option value="oldest">Cũ nhất</option>
+                    <option value="az">A → Z</option>
+                    <option value="za">Z → A</option>
+                </select>
+            </div>
         </div>
         <div class="grid" id="grid"></div>
     </main>
 </div>
 
+<!-- Modal: Prompt -->
 <div class="mo" id="mPr">
     <div class="mo-box">
         <div class="mo-h">
@@ -252,10 +291,14 @@
                 <label class="fl">Tên prompt <span class="req">*</span></label>
                 <input type="text" class="fi" id="pName" placeholder="Nhập tên..." maxlength="200">
             </div>
-            <div class="fr3">
+            <div class="fr4">
                 <div class="fg">
                     <label class="fl">Danh mục <span class="req">*</span></label>
-                    <select class="fi" id="pCat"></select>
+                    <select class="fi" id="pCat" onchange="App.updSecSel()"></select>
+                </div>
+                <div class="fg">
+                    <label class="fl">Ngăn</label>
+                    <select class="fi" id="pSec"></select>
                 </div>
                 <div class="fg">
                     <label class="fl">Thiết bị</label>
@@ -276,7 +319,7 @@
             </div>
             <div class="fg">
                 <label class="fl">Ghi chú</label>
-                <input type="text" class="fi" id="pNote" placeholder="Ghi chú thêm..." maxlength="500">
+                <textarea class="ft ft-note" id="pNote" placeholder="Ghi chú, hướng dẫn sử dụng..." rows="3"></textarea>
             </div>
         </div>
         <div class="mo-f">
@@ -286,6 +329,7 @@
     </div>
 </div>
 
+<!-- Modal: View -->
 <div class="mo" id="mVw">
     <div class="mo-box" style="max-width:620px">
         <div class="mo-h">
@@ -295,7 +339,10 @@
         <div class="mo-b">
             <div class="card-m" id="vwM"></div>
             <div class="vc" id="vwC"></div>
-            <div id="vwN" style="font-size:.78rem;color:var(--tx3);display:none">Ghi chú: <span id="vwNT"></span></div>
+            <div id="vwN" style="display:none">
+                <div class="vw-note-label">Ghi chú</div>
+                <div class="vw-note" id="vwNT"></div>
+            </div>
         </div>
         <div class="mo-f">
             <button class="btn" onclick="App.closeMo('mVw')">Đóng</button>
@@ -305,8 +352,9 @@
     </div>
 </div>
 
+<!-- Modal: Category -->
 <div class="mo" id="mCt">
-    <div class="mo-box" style="max-width:380px">
+    <div class="mo-box" style="max-width:400px">
         <div class="mo-h">
             <div class="mo-t" id="mCtT">Thêm danh mục</div>
             <button class="mo-x" onclick="App.closeMo('mCt')">✕</button>
@@ -319,17 +367,11 @@
             </div>
             <div class="fg">
                 <label class="fl">Màu sắc</label>
-                <select class="fi" id="cColor">
-                    <option value="#635bff">Tím đậm</option>
-                    <option value="#a78bfa">Tím nhạt</option>
-                    <option value="#3b82f6">Xanh dương</option>
-                    <option value="#10b981">Xanh lá</option>
-                    <option value="#06b6d4">Ngọc</option>
-                    <option value="#f59e0b">Vàng</option>
-                    <option value="#f97316">Cam</option>
-                    <option value="#ef4444">Đỏ</option>
-                    <option value="#ec4899">Hồng</option>
-                </select>
+                <div class="color-row">
+                    <div class="color-prev" id="cPrev" style="background:#635bff"></div>
+                    <input type="color" class="fi-color" id="cColor" value="#635bff" oninput="document.getElementById('cPrev').style.background=this.value">
+                    <input type="text" class="fi" id="cHex" value="#635bff" maxlength="7" style="width:80px;font-size:.78rem;font-family:monospace" oninput="App.syncColor(this.value)">
+                </div>
             </div>
         </div>
         <div class="mo-f">
@@ -339,6 +381,30 @@
     </div>
 </div>
 
+<!-- Modal: Section manage -->
+<div class="mo" id="mSec">
+    <div class="mo-box" style="max-width:400px">
+        <div class="mo-h">
+            <div class="mo-t" id="mSecT">Quản lý ngăn</div>
+            <button class="mo-x" onclick="App.closeMo('mSec')">✕</button>
+        </div>
+        <div class="mo-b">
+            <div class="fg">
+                <label class="fl">Danh sách ngăn trong danh mục này</label>
+                <div class="sec-list" id="secList"></div>
+                <div class="sec-add-row">
+                    <input type="text" class="fi" id="secInput" placeholder="Tên ngăn mới..." maxlength="60" style="flex:1" onkeydown="if(event.key==='Enter')App.addSec()">
+                    <button class="btn btn-p btn-s" onclick="App.addSec()">Thêm</button>
+                </div>
+            </div>
+        </div>
+        <div class="mo-f">
+            <button class="btn" onclick="App.closeMo('mSec')">Đóng</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Confirm -->
 <div class="mo" id="mCf">
     <div class="mo-box" style="max-width:360px">
         <div class="mo-h">
@@ -347,8 +413,8 @@
         </div>
         <div class="mo-b">
             <div class="cc">
-                <div><strong id="cfTx">Bạn có chắc muốn xóa?</strong></div>
-                <p id="cfSub">Hành động này không thể hoàn tác.</p>
+                <div><strong id="cfTx"></strong></div>
+                <p id="cfSub"></p>
             </div>
         </div>
         <div class="mo-f">
@@ -362,450 +428,384 @@
 
 <script>
 (function(){
-    "use strict";
-    var SK='ntp_v4';
-    var DC=[
-        {id:'cat_code',name:'Prompt cho Code',color:'#3b82f6'},
-        {id:'cat_ai',name:'Prompt cho AI',color:'#635bff'},
-        {id:'cat_ppt',name:'Prompt cho PPT',color:'#f97316'},
-        {id:'cat_write',name:'Prompt cho Viết',color:'#10b981'},
-        {id:'cat_img',name:'Prompt cho Hình Ảnh',color:'#ec4899'},
-        {id:'cat_other',name:'Khác',color:'#06b6d4'}
-    ];
-    var DA=['GEMINI','ARENA.AI','GAMMA','CANVA','PPT COPILOT'];
-    var cats=[],prompts=[],ais=[];
-    var aCat='all',aDev='all',aAi='all',sQ='',_st=null;
+"use strict";
+var SK='ntp_v5';
+var DC=[
+    {id:'cat_code',name:'Prompt cho Code',color:'#3b82f6',sections:[]},
+    {id:'cat_ai',name:'Prompt cho AI',color:'#635bff',sections:[]},
+    {id:'cat_ppt',name:'Prompt cho PPT',color:'#f97316',sections:[]},
+    {id:'cat_write',name:'Prompt cho Viết',color:'#10b981',sections:[]},
+    {id:'cat_img',name:'Prompt cho Hình Ảnh',color:'#ec4899',sections:[]},
+    {id:'cat_other',name:'Khác',color:'#06b6d4',sections:[]}
+];
+var DA=['GEMINI','ARENA.AI','GAMMA','CANVA','PPT COPILOT'];
+var cats=[],prompts=[],ais=[],trash=[];
+var aCat='all',aDev='all',aAi='all',sQ='',_st=null;
+var drag={active:false,catId:null,ghost:null,touchId:null};
 
-    // Drag state
-    var drag={active:false,catId:null,startIdx:-1,ghost:null,touchId:null};
+function $(id){return document.getElementById(id)}
+function uid(){return 'p'+Date.now().toString(36)+Math.random().toString(36).substr(2,6)}
+function esc(t){if(!t)return'';var d=document.createElement('div');d.textContent=t;return d.innerHTML}
+function fmtD(ts){if(!ts)return'';var d=new Date(ts);if(isNaN(d))return'';return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
+function trn(s,n){return(!s)?'':(s.length<=n?s:s.substring(0,n)+'...')}
 
-    function $(id){return document.getElementById(id)}
-    function uid(){return 'p'+Date.now().toString(36)+Math.random().toString(36).substr(2,6)}
-    function esc(t){if(!t)return'';var d=document.createElement('div');d.textContent=t;return d.innerHTML}
-    function fmtD(ts){if(!ts)return'';var d=new Date(ts);if(isNaN(d))return'';return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
-    function trn(s,n){return(!s)?'':(s.length<=n?s:s.substring(0,n)+'...')}
+function load(){
+    try{
+        var r=localStorage.getItem(SK);
+        if(r){var o=JSON.parse(r);
+            cats=Array.isArray(o.cats)?o.cats:JSON.parse(JSON.stringify(DC));
+            prompts=Array.isArray(o.prompts)?o.prompts:[];
+            ais=Array.isArray(o.ais)?o.ais:DA.slice();
+            trash=Array.isArray(o.trash)?o.trash:[];
+        }else{cats=JSON.parse(JSON.stringify(DC));prompts=[];ais=DA.slice();trash=[]}
+    }catch(e){cats=JSON.parse(JSON.stringify(DC));prompts=[];ais=DA.slice();trash=[]}
+    prompts=prompts.filter(function(p){return p&&p.id&&p.name&&p.content});
+    trash=trash.filter(function(p){return p&&p.id&&p.name&&p.content});
+    // ensure sections
+    for(var i=0;i<cats.length;i++) if(!Array.isArray(cats[i].sections)) cats[i].sections=[];
+    var seen={};ais=ais.filter(function(a){var k=a.toUpperCase().trim();if(!k||seen[k])return false;seen[k]=true;return true});
+}
+function save(){try{localStorage.setItem(SK,JSON.stringify({cats:cats,prompts:prompts,ais:ais,trash:trash}))}catch(e){toast('Lỗi lưu dữ liệu','err')}}
 
-    function load(){
-        try{
-            var r=localStorage.getItem(SK);
-            if(r){var o=JSON.parse(r);cats=Array.isArray(o.cats)?o.cats:JSON.parse(JSON.stringify(DC));prompts=Array.isArray(o.prompts)?o.prompts:[];ais=Array.isArray(o.ais)?o.ais:DA.slice()}
-            else{cats=JSON.parse(JSON.stringify(DC));prompts=[];ais=DA.slice()}
-        }catch(e){cats=JSON.parse(JSON.stringify(DC));prompts=[];ais=DA.slice()}
-        prompts=prompts.filter(function(p){return p&&p.id&&p.name&&p.content});
-        var seen={};ais=ais.filter(function(a){var k=a.toUpperCase().trim();if(!k||seen[k])return false;seen[k]=true;return true});
+function toast(msg,type){
+    type=type||'inf';var c=$('toastC'),el=document.createElement('div');
+    el.className='toast '+(type==='ok'?'ok':type==='err'?'err':'inf');
+    el.textContent=msg;c.appendChild(el);
+    setTimeout(function(){el.classList.add('out');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},250)},2500);
+}
+
+function openMo(id){$(id).classList.add('show')}
+function closeMo(id){$(id).classList.remove('show')}
+document.addEventListener('click',function(e){if(e.target.classList.contains('mo')&&e.target.classList.contains('show'))e.target.classList.remove('show')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){var ms=document.querySelectorAll('.mo.show');if(ms.length>0)ms[ms.length-1].classList.remove('show')}});
+
+function toggleSb(){$('sb').classList.toggle('open');$('sbOv').classList.toggle('show')}
+function closeSbM(){if(window.innerWidth<=768){$('sb').classList.remove('open');$('sbOv').classList.remove('show')}}
+
+// ===== AI =====
+function renderAis(){
+    var l=$('aiList'),h='<span class="ai-tag'+(aAi==='all'?' on':'')+'" onclick="App.aiFilter(\'all\')">Tất cả</span>';
+    for(var i=0;i<ais.length;i++){var a=ais[i];h+='<span class="ai-tag'+(aAi===a?' on':'')+'" onclick="App.aiFilter(\''+esc(a)+'\')">'+esc(a)+'<span class="x" onclick="event.stopPropagation();App.delAi(\''+esc(a)+'\')">✕</span></span>'}
+    l.innerHTML=h;
+}
+function addAi(){var inp=$('aiInput'),val=(inp.value||'').trim().toUpperCase();if(!val){toast('Nhập tên AI','err');inp.focus();return}for(var i=0;i<ais.length;i++)if(ais[i].toUpperCase()===val){toast('AI đã tồn tại','err');inp.focus();return}ais.push(val);inp.value='';save();renderAis();updAiSel();toast('Đã thêm '+val,'ok')}
+function delAi(name){$('cfTx').textContent='Xóa agent "'+trn(name,20)+'"?';$('cfSub').textContent='Prompt liên kết sẽ bỏ agent này.';var cfb=$('cfBtn');cfb.textContent='Xóa';cfb.className='btn btn-d';cfb.onclick=function(){ais=ais.filter(function(a){return a!==name});for(var i=0;i<prompts.length;i++)if(prompts[i].ai===name)prompts[i].ai='';if(aAi===name)aAi='all';save();renderAis();updAiSel();render();closeMo('mCf');toast('Đã xóa','ok')};openMo('mCf')}
+function aiFilter(n){aAi=n;renderAis();render();closeSbM()}
+function updAiSel(){var s=$('pAi'),h='<option value="">Không chọn</option>';for(var i=0;i<ais.length;i++)h+='<option value="'+esc(ais[i])+'">'+esc(ais[i])+'</option>';s.innerHTML=h}
+
+// ===== SECTIONS =====
+function getSections(catId){var c=findCat(catId);return c&&Array.isArray(c.sections)?c.sections:[]}
+function openSecMo(){
+    if(aCat==='all'||aCat==='__trash__')return;
+    var c=findCat(aCat);if(!c)return;
+    $('mSecT').textContent='Ngăn — '+c.name;
+    renderSecList();openMo('mSec');
+}
+function renderSecList(){
+    var c=findCat(aCat);if(!c)return;
+    var l=$('secList'),h='';
+    for(var i=0;i<c.sections.length;i++){
+        var s=c.sections[i];
+        h+='<div class="sec-item"><span class="sec-nm">'+esc(s)+'</span><button class="sec-del" onclick="App.delSec('+i+')">xóa</button></div>';
     }
-    function save(){try{localStorage.setItem(SK,JSON.stringify({cats:cats,prompts:prompts,ais:ais}))}catch(e){toast('Lỗi lưu dữ liệu','err')}}
+    if(!c.sections.length) h='<div style="font-size:.78rem;color:var(--tx3);padding:4px 8px">Chưa có ngăn nào</div>';
+    l.innerHTML=h;
+}
+function addSec(){
+    var c=findCat(aCat);if(!c)return;
+    var val=($('secInput').value||'').trim();
+    if(!val){toast('Nhập tên ngăn','err');$('secInput').focus();return}
+    for(var i=0;i<c.sections.length;i++)if(c.sections[i].toLowerCase()===val.toLowerCase()){toast('Ngăn đã tồn tại','err');return}
+    c.sections.push(val);$('secInput').value='';save();renderSecList();updSecFilter();render();toast('Đã thêm ngăn','ok');
+}
+function delSec(idx){
+    var c=findCat(aCat);if(!c)return;
+    var name=c.sections[idx];
+    // Move prompts in this section to no section
+    for(var i=0;i<prompts.length;i++)if(prompts[i].category===aCat&&prompts[i].section===name)prompts[i].section='';
+    c.sections.splice(idx,1);save();renderSecList();updSecFilter();render();toast('Đã xóa ngăn','ok');
+}
+function updSecFilter(){
+    var sel=$('secFilter'),btn=$('secBtn');
+    if(aCat==='all'||aCat==='__trash__'){sel.style.display='none';btn.style.display='none';return}
+    var c=findCat(aCat);
+    if(!c||!c.sections.length){sel.style.display='none';btn.style.display='none';return}
+    btn.style.display='';sel.style.display='';
+    var h='<option value="all">Tất cả ngăn</option>';
+    for(var i=0;i<c.sections.length;i++)h+='<option value="'+esc(c.sections[i])+'">'+esc(c.sections[i])+'</option>';
+    h+='<option value="__none__">Chưa phân ngăn</option>';
+    sel.innerHTML=h;
+}
+function updSecSel(){
+    var catId=$('pCat').value;
+    var sel=$('pSec'),h='<option value="">Không chọn</option>';
+    var c=findCat(catId);
+    if(c&&c.sections){for(var i=0;i<c.sections.length;i++)h+='<option value="'+esc(c.sections[i])+'">'+esc(c.sections[i])+'</option>'}
+    sel.innerHTML=h;
+}
 
-    function toast(msg,type){
-        type=type||'inf';var c=$('toastC'),el=document.createElement('div');
-        el.className='toast '+(type==='ok'?'ok':type==='err'?'err':'inf');
-        el.textContent=msg;c.appendChild(el);
-        setTimeout(function(){el.classList.add('out');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},250)},2500);
+// ===== CATEGORIES =====
+function renderCats(){
+    var l=$('catL'),counts={},total=prompts.length;
+    for(var i=0;i<prompts.length;i++)counts[prompts[i].category]=(counts[prompts[i].category]||0)+1;
+    var h='<div class="cat-i'+(aCat==='all'?' on':'')+'" onclick="App.selCat(\'all\')"><div class="cat-d" style="background:#555"></div><div class="cat-n">Tất cả</div><div class="cat-c">'+total+'</div></div>';
+    for(var j=0;j<cats.length;j++){
+        var c=cats[j],cnt=counts[c.id]||0;
+        h+='<div class="cat-i'+(aCat===c.id?' on':'')+'" data-cat-id="'+c.id+'" data-cat-idx="'+j+'"><span class="cat-grip" data-grip="'+c.id+'">⠿</span><div class="cat-d" style="background:'+c.color+'"></div><div class="cat-n" onclick="App.selCat(\''+c.id+'\')">'+esc(c.name)+'</div><div class="cat-c">'+cnt+'</div><div class="cat-a"><button class="cat-ab" onclick="event.stopPropagation();App.editCat(\''+c.id+'\')">sửa</button><button class="cat-ab" onclick="event.stopPropagation();App.delCat(\''+c.id+'\')">xóa</button></div></div>';
     }
+    // Trash
+    h+='<div class="cat-i trash-item'+(aCat==='__trash__'?' on':'')+'" onclick="App.selCat(\'__trash__\')"><div class="cat-d" style="background:var(--rd)"></div><div class="cat-n">Thùng rác</div><div class="cat-c">'+trash.length+'</div></div>';
+    l.innerHTML=h;
+    bindDrag();renderStats();
+}
 
-    function openMo(id){var el=$(id);if(el)el.classList.add('show')}
-    function closeMo(id){var el=$(id);if(el)el.classList.remove('show')}
-    document.addEventListener('click',function(e){if(e.target.classList.contains('mo')&&e.target.classList.contains('show'))e.target.classList.remove('show')});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){var ms=document.querySelectorAll('.mo.show');if(ms.length>0)ms[ms.length-1].classList.remove('show')}});
+// ===== DRAG =====
+function bindDrag(){
+    var items=document.querySelectorAll('.cat-i[data-cat-id]');
+    for(var i=0;i<items.length;i++){
+        var grip=items[i].querySelector('.cat-grip');if(!grip)continue;
+        grip.addEventListener('mousedown',onDS);
+        grip.addEventListener('touchstart',onTS,{passive:false});
+    }
+}
+function getCatIdx(id){for(var i=0;i<cats.length;i++)if(cats[i].id===id)return i;return-1}
+function getCatItems(){return document.querySelectorAll('.cat-i[data-cat-id]')}
+function clearHL(){var it=getCatItems();for(var i=0;i<it.length;i++)it[i].classList.remove('drag-over','drag-over-below','dragging')}
+function getDT(x,y){var it=getCatItems();for(var i=0;i<it.length;i++){var r=it[i].getBoundingClientRect();if(y>=r.top&&y<=r.bottom&&x>=r.left&&x<=r.right)return{el:it[i],id:it[i].getAttribute('data-cat-id')}}return null}
+function onDS(e){e.preventDefault();e.stopPropagation();var el=e.currentTarget.closest('.cat-i');drag.active=true;drag.catId=el.getAttribute('data-cat-id');el.classList.add('dragging');document.addEventListener('mousemove',onDM);document.addEventListener('mouseup',onDE)}
+function onDM(e){if(!drag.active)return;clearHL();var t=getDT(e.clientX,e.clientY);if(t&&t.id!==drag.catId){var r=t.el.getBoundingClientRect();if(e.clientY<r.top+r.height/2)t.el.classList.add('drag-over');else t.el.classList.add('drag-over-below')}}
+function onDE(e){if(!drag.active)return;document.removeEventListener('mousemove',onDM);document.removeEventListener('mouseup',onDE);var t=getDT(e.clientX,e.clientY);if(t&&t.id!==drag.catId){var r=t.el.getBoundingClientRect();moveCat(drag.catId,t.id,e.clientY>=r.top+r.height/2)}clearHL();drag.active=false;drag.catId=null}
+function onTS(e){if(e.touches.length!==1)return;e.preventDefault();var touch=e.touches[0],el=e.currentTarget.closest('.cat-i');drag.active=true;drag.catId=el.getAttribute('data-cat-id');drag.touchId=touch.identifier;el.classList.add('dragging');var gh=document.createElement('div');gh.className='drag-ghost';var c=findCat(drag.catId);gh.textContent=c?c.name:'';gh.style.left=(touch.clientX+10)+'px';gh.style.top=(touch.clientY-15)+'px';document.body.appendChild(gh);drag.ghost=gh;document.addEventListener('touchmove',onTM,{passive:false});document.addEventListener('touchend',onTE);document.addEventListener('touchcancel',onTE)}
+function onTM(e){if(!drag.active)return;e.preventDefault();var t=null;for(var i=0;i<e.touches.length;i++)if(e.touches[i].identifier===drag.touchId){t=e.touches[i];break}if(!t)return;if(drag.ghost){drag.ghost.style.left=(t.clientX+10)+'px';drag.ghost.style.top=(t.clientY-15)+'px'}clearHL();var dt=getDT(t.clientX,t.clientY);if(dt&&dt.id!==drag.catId){var r=dt.el.getBoundingClientRect();if(t.clientY<r.top+r.height/2)dt.el.classList.add('drag-over');else dt.el.classList.add('drag-over-below')}var cl=$('catL'),cr=cl.getBoundingClientRect();if(t.clientY<cr.top+30)cl.scrollTop-=5;if(t.clientY>cr.bottom-30)cl.scrollTop+=5}
+function onTE(e){if(!drag.active)return;document.removeEventListener('touchmove',onTM);document.removeEventListener('touchend',onTE);document.removeEventListener('touchcancel',onTE);var t=null;if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===drag.touchId){t=e.changedTouches[i];break}if(t){var dt=getDT(t.clientX,t.clientY);if(dt&&dt.id!==drag.catId){var r=dt.el.getBoundingClientRect();moveCat(drag.catId,dt.id,t.clientY>=r.top+r.height/2)}}if(drag.ghost&&drag.ghost.parentNode)drag.ghost.parentNode.removeChild(drag.ghost);clearHL();drag.active=false;drag.catId=null;drag.ghost=null;drag.touchId=null}
+function moveCat(from,to,below){var fi=getCatIdx(from),ti=getCatIdx(to);if(fi===-1||ti===-1||fi===ti)return;var item=cats.splice(fi,1)[0];var ni=getCatIdx(to);if(ni===-1)ni=cats.length;if(below)ni++;cats.splice(ni,0,item);save();renderCats();updCatSel();toast('Đã sắp xếp lại','ok')}
 
-    function toggleSb(){$('sb').classList.toggle('open');$('sbOv').classList.toggle('show')}
-    function closeSbM(){if(window.innerWidth<=768){$('sb').classList.remove('open');$('sbOv').classList.remove('show')}}
+function renderStats(){
+    var pc=0,ph=0,bt=0;
+    for(var i=0;i<prompts.length;i++){if(prompts[i].device==='pc')pc++;else if(prompts[i].device==='phone')ph++;else bt++}
+    $('sts').innerHTML='Tổng '+prompts.length+' · PC '+pc+' · Phone '+ph+' · Cả hai '+bt;
+}
+function selCat(id){aCat=id;renderCats();updSecFilter();render();updTb();closeSbM()}
+function devFilter(dv){aDev=dv;var bs=document.querySelectorAll('.seg-b');for(var i=0;i<bs.length;i++)bs[i].classList.toggle('on',bs[i].getAttribute('data-dv')===dv);render()}
+function doSearch(){sQ=($('sInput').value||'').trim().toLowerCase();render()}
 
-    // ===== AI =====
-    function renderAis(){
-        var l=$('aiList');
-        var h='<span class="ai-tag'+(aAi==='all'?' on':'')+'" onclick="App.aiFilter(\'all\')">Tất cả</span>';
-        for(var i=0;i<ais.length;i++){
-            var a=ais[i];
-            h+='<span class="ai-tag'+(aAi===a?' on':'')+'" onclick="App.aiFilter(\''+esc(a)+'\')">'+esc(a)+
-                '<span class="x" onclick="event.stopPropagation();App.delAi(\''+esc(a)+'\')">✕</span></span>';
+function getF(){
+    // If trash view
+    if(aCat==='__trash__'){
+        var tl=trash.slice();
+        if(sQ)tl=tl.filter(function(p){return(p.name||'').toLowerCase().indexOf(sQ)!==-1||(p.content||'').toLowerCase().indexOf(sQ)!==-1});
+        return tl;
+    }
+    var list=[];
+    for(var i=0;i<prompts.length;i++){
+        var p=prompts[i];
+        if(aCat!=='all'&&p.category!==aCat)continue;
+        if(aDev!=='all'&&p.device!==aDev&&p.device!=='both')continue;
+        if(aAi!=='all'&&(p.ai||'')!==aAi)continue;
+        // Section filter
+        var sf=$('secFilter').value;
+        if(sf&&sf!=='all'&&aCat!=='all'){
+            if(sf==='__none__'){if(p.section)continue}
+            else{if((p.section||'')!==sf)continue}
         }
-        l.innerHTML=h;
+        if(sQ){var nm=(p.name||'').toLowerCase(),ct=(p.content||'').toLowerCase(),nt=(p.note||'').toLowerCase(),ai=(p.ai||'').toLowerCase();if(nm.indexOf(sQ)===-1&&ct.indexOf(sQ)===-1&&nt.indexOf(sQ)===-1&&ai.indexOf(sQ)===-1)continue}
+        list.push(p);
     }
-    function addAi(){
-        var inp=$('aiInput'),val=(inp.value||'').trim().toUpperCase();
-        if(!val){toast('Nhập tên AI','err');inp.focus();return}
-        for(var i=0;i<ais.length;i++)if(ais[i].toUpperCase()===val){toast('AI đã tồn tại','err');inp.focus();return}
-        ais.push(val);inp.value='';save();renderAis();updAiSel();toast('Đã thêm '+val,'ok');
+    var sort=$('tbSort').value;
+    list.sort(function(a,b){switch(sort){case'oldest':return(a.created||0)-(b.created||0);case'az':return(a.name||'').localeCompare(b.name||'','vi');case'za':return(b.name||'').localeCompare(a.name||'','vi');default:return(b.created||0)-(a.created||0)}});
+    return list;
+}
+
+function render(){
+    var grid=$('grid'),list=getF(),isTrash=aCat==='__trash__';
+    $('tbCnt').textContent=list.length+(isTrash?' mục rác':' prompt');
+    if(list.length===0){grid.innerHTML='<div class="empty"><div class="empty-tx">'+(sQ?'Không tìm thấy kết quả':(isTrash?'Thùng rác trống':'Chưa có prompt nào'))+'</div><div class="empty-sub">'+(sQ?'Thử từ khóa khác':(isTrash?'Prompt bị xóa sẽ nằm ở đây':'Bấm "+ Thêm prompt" để bắt đầu'))+'</div></div>';return}
+
+    if(isTrash){renderTrash(list);return}
+
+    // Group by section if viewing a specific category
+    var sf=$('secFilter');
+    var showSections=aCat!=='all'&&sf.style.display!=='none'&&sf.value==='all';
+    if(showSections){renderGrouped(list)}else{renderFlat(list)}
+}
+
+function renderFlat(list){
+    var parts=[];
+    for(var i=0;i<list.length;i++) parts.push(buildCard(list[i],false));
+    $('grid').innerHTML=parts.join('');
+}
+
+function renderGrouped(list){
+    var c=findCat(aCat);if(!c){renderFlat(list);return}
+    var groups={},noSec=[];
+    for(var i=0;i<list.length;i++){
+        var sec=list[i].section||'';
+        if(sec&&c.sections.indexOf(sec)!==-1){if(!groups[sec])groups[sec]=[];groups[sec].push(list[i])}
+        else noSec.push(list[i]);
     }
-    function delAi(name){
-        $('cfTx').textContent='Xóa agent "'+trn(name,20)+'"?';
-        $('cfSub').textContent='Prompt liên kết sẽ bỏ agent này.';
-        var cfb=$('cfBtn');cfb.textContent='Xóa';cfb.className='btn btn-d';
-        cfb.onclick=function(){
-            ais=ais.filter(function(a){return a!==name});
-            for(var i=0;i<prompts.length;i++)if(prompts[i].ai===name)prompts[i].ai='';
-            if(aAi===name)aAi='all';
-            save();renderAis();updAiSel();render();closeMo('mCf');toast('Đã xóa '+name,'ok');
-        };openMo('mCf');
+    var parts=[];
+    for(var j=0;j<c.sections.length;j++){
+        var sn=c.sections[j],items=groups[sn]||[];
+        if(!items.length)continue;
+        parts.push('<div class="section-div"><span class="section-name">'+esc(sn)+'</span><span class="section-line"></span></div>');
+        for(var k=0;k<items.length;k++)parts.push(buildCard(items[k],false));
     }
-    function aiFilter(n){aAi=n;renderAis();render();closeSbM()}
-    function updAiSel(){
-        var s=$('pAi'),h='<option value="">Không chọn</option>';
-        for(var i=0;i<ais.length;i++)h+='<option value="'+esc(ais[i])+'">'+esc(ais[i])+'</option>';
-        s.innerHTML=h;
+    if(noSec.length){
+        if(parts.length)parts.push('<div class="section-div"><span class="section-name">Chưa phân ngăn</span><span class="section-line"></span></div>');
+        for(var m=0;m<noSec.length;m++)parts.push(buildCard(noSec[m],false));
     }
+    $('grid').innerHTML=parts.join('');
+}
 
-    // ===== CATEGORIES =====
-    function renderCats(){
-        var l=$('catL'),counts={},total=prompts.length;
-        for(var i=0;i<prompts.length;i++)counts[prompts[i].category]=(counts[prompts[i].category]||0)+1;
-        var h='<div class="cat-i'+(aCat==='all'?' on':'')+'" onclick="App.selCat(\'all\')"><div class="cat-d" style="background:#555"></div><div class="cat-n">Tất cả</div><div class="cat-c">'+total+'</div></div>';
-        for(var j=0;j<cats.length;j++){
-            var c=cats[j],cnt=counts[c.id]||0;
-            h+='<div class="cat-i'+(aCat===c.id?' on':'')+'" data-cat-id="'+c.id+'" data-cat-idx="'+j+'">' +
-                '<span class="cat-grip" data-grip="'+c.id+'">⠿</span>' +
-                '<div class="cat-d" style="background:'+c.color+'"></div>' +
-                '<div class="cat-n" onclick="App.selCat(\''+c.id+'\')">'+esc(c.name)+'</div>' +
-                '<div class="cat-c">'+cnt+'</div>' +
-                '<div class="cat-a">' +
-                '<button class="cat-ab" onclick="event.stopPropagation();App.editCat(\''+c.id+'\')">sửa</button>' +
-                '<button class="cat-ab" onclick="event.stopPropagation();App.delCat(\''+c.id+'\')">xóa</button>' +
-                '</div></div>';
-        }
-        l.innerHTML=h;
-        bindDrag();
-        renderStats();
+function renderTrash(list){
+    var parts=[];
+    for(var i=0;i<list.length;i++)parts.push(buildCard(list[i],true));
+    $('grid').innerHTML=parts.join('');
+}
+
+function buildCard(p,isTrash){
+    var cat=findCat(p.category),cn=cat?cat.name:'—',cc=cat?cat.color:'#555';
+    var dv='';if(p.device==='pc')dv='<span class="tag tag-pc">PC</span>';else if(p.device==='phone')dv='<span class="tag tag-ph">PHONE</span>';else dv='<span class="tag tag-bt">ALL</span>';
+    var ai=p.ai?'<span class="tag tag-ai">'+esc(p.ai)+'</span>':'';
+    var sec=p.section?'<span class="tag tag-sec">'+esc(p.section)+'</span>':'';
+    var noteHtml='';
+    if(p.note){noteHtml='<div class="card-note">'+esc(p.note)+'</div>'}
+    var acts='';
+    if(isTrash){
+        acts='<button class="btn btn-s btn-w" onclick="App.restore(\''+p.id+'\')">Khôi phục</button><button class="btn btn-s btn-d" onclick="App.permDel(\''+p.id+'\')">Xóa vĩnh viễn</button>';
+    }else{
+        acts='<button class="btn btn-s" onclick="App.view(\''+p.id+'\')">Xem</button><button class="btn btn-s" onclick="App.copy(\''+p.id+'\')">Chép</button><button class="btn btn-s" onclick="App.editPr(\''+p.id+'\')">Sửa</button><button class="btn btn-s btn-d" onclick="App.delPr(\''+p.id+'\')">Xóa</button>';
     }
+    return '<div class="card'+(isTrash?' in-trash':'')+'"><div class="card-h"><div class="card-t">'+esc(p.name)+'</div><div class="tags">'+sec+ai+dv+'</div></div><div class="card-p">'+esc(p.content)+'</div>'+noteHtml+'<div class="card-m"><span class="card-tag" style="border-left:2px solid '+cc+';padding-left:6px">'+esc(cn)+'</span><span class="card-dt">'+fmtD(p.created)+'</span></div><div class="card-act">'+acts+'</div></div>';
+}
 
-    // ===== DRAG & DROP (Mouse + Touch) =====
-    function bindDrag(){
-        var items=document.querySelectorAll('.cat-i[data-cat-id]');
-        for(var i=0;i<items.length;i++){
-            var grip=items[i].querySelector('.cat-grip');
-            if(!grip) continue;
+function updTb(){
+    if(aCat==='all')$('tbCat').textContent='Tất cả';
+    else if(aCat==='__trash__')$('tbCat').textContent='Thùng rác';
+    else $('tbCat').textContent=(findCat(aCat)||{}).name||'Tất cả';
+}
+function findCat(id){for(var i=0;i<cats.length;i++)if(cats[i].id===id)return cats[i];return null}
+function findPr(id){for(var i=0;i<prompts.length;i++)if(prompts[i].id===id)return prompts[i];return null}
+function findTrash(id){for(var i=0;i<trash.length;i++)if(trash[i].id===id)return trash[i];return null}
+function updCatSel(){var s=$('pCat'),h='';for(var i=0;i<cats.length;i++)h+='<option value="'+cats[i].id+'">'+esc(cats[i].name)+'</option>';s.innerHTML=h}
 
-            // Mouse
-            grip.addEventListener('mousedown',onDragStart);
+// ===== COLOR =====
+function syncColor(hex){
+    hex=(hex||'').trim();
+    if(/^#[0-9a-fA-F]{6}$/.test(hex)){$('cColor').value=hex;$('cPrev').style.background=hex}
+}
 
-            // Touch
-            grip.addEventListener('touchstart',onTouchStart,{passive:false});
-        }
-    }
+// ===== CATEGORY CRUD =====
+function openCatAdd(){$('mCtT').textContent='Thêm danh mục';$('eCatId').value='';$('cName').value='';$('cColor').value='#635bff';$('cHex').value='#635bff';$('cPrev').style.background='#635bff';openMo('mCt');setTimeout(function(){$('cName').focus()},100)}
+function editCat(id){var c=findCat(id);if(!c)return;$('mCtT').textContent='Sửa danh mục';$('eCatId').value=id;$('cName').value=c.name;$('cColor').value=c.color;$('cHex').value=c.color;$('cPrev').style.background=c.color;openMo('mCt');setTimeout(function(){$('cName').focus()},100)}
+function saveCat(){
+    var eId=($('eCatId').value||'').trim(),name=($('cName').value||'').trim(),color=$('cColor').value;
+    if(!name){toast('Nhập tên danh mục','err');$('cName').focus();return}
+    for(var i=0;i<cats.length;i++)if(cats[i].name.toLowerCase()===name.toLowerCase()&&cats[i].id!==eId){toast('Tên đã tồn tại','err');$('cName').focus();return}
+    if(eId){var c=findCat(eId);if(c){c.name=name;c.color=color;toast('Đã cập nhật','ok')}}
+    else{cats.push({id:uid(),name:name,color:color,sections:[]});toast('Đã thêm danh mục','ok')}
+    save();renderCats();updCatSel();updTb();closeMo('mCt');
+}
+function delCat(id){
+    var c=findCat(id);if(!c)return;
+    var count=0;for(var i=0;i<prompts.length;i++)if(prompts[i].category===id)count++;
+    $('cfTx').textContent='Xóa "'+trn(c.name,25)+'"?';$('cfSub').textContent=count>0?count+' prompt sẽ chuyển danh mục khác.':'Không thể hoàn tác.';
+    var cfb=$('cfBtn');cfb.textContent='Xóa';cfb.className='btn btn-d';
+    cfb.onclick=function(){
+        if(count>0){var fb=null;for(var j=0;j<cats.length;j++)if(cats[j].id!==id){fb=cats[j].id;break}if(!fb){fb=uid();cats.push({id:fb,name:'Khác',color:'#06b6d4',sections:[]})}for(var k=0;k<prompts.length;k++)if(prompts[k].category===id){prompts[k].category=fb;prompts[k].section=''}}
+        cats=cats.filter(function(x){return x.id!==id});if(aCat===id)aCat='all';
+        save();renderCats();render();updTb();updCatSel();updSecFilter();closeMo('mCf');toast('Đã xóa','ok');
+    };openMo('mCf');
+}
 
-    function getCatIdx(id){
-        for(var i=0;i<cats.length;i++) if(cats[i].id===id) return i;
-        return -1;
-    }
+// ===== PROMPT CRUD =====
+function openAdd(){
+    $('mPrT').textContent='Thêm prompt mới';$('eId').value='';$('pName').value='';$('pCont').value='';$('pDev').value='both';$('pNote').value='';
+    updCatSel();updAiSel();$('pAi').value='';
+    if(aCat!=='all'&&aCat!=='__trash__')$('pCat').value=aCat;
+    if(aAi!=='all')$('pAi').value=aAi;
+    updSecSel();$('pSec').value='';
+    openMo('mPr');setTimeout(function(){$('pName').focus()},100);
+}
+function editPr(id){
+    var p=findPr(id);if(!p)return;
+    $('mPrT').textContent='Sửa prompt';$('eId').value=id;$('pName').value=p.name;$('pCont').value=p.content;$('pDev').value=p.device||'both';$('pNote').value=p.note||'';
+    updCatSel();updAiSel();$('pCat').value=p.category;$('pAi').value=p.ai||'';
+    updSecSel();$('pSec').value=p.section||'';
+    closeMo('mVw');openMo('mPr');setTimeout(function(){$('pName').focus()},100);
+}
+function savePr(){
+    var eId=($('eId').value||'').trim(),name=($('pName').value||'').trim(),category=$('pCat').value,device=$('pDev').value,ai=$('pAi').value||'',section=$('pSec').value||'',content=($('pCont').value||'').trim(),note=($('pNote').value||'').trim();
+    if(!name){toast('Nhập tên prompt','err');$('pName').focus();return}
+    if(!content){toast('Nhập nội dung','err');$('pCont').focus();return}
+    if(!category||!findCat(category)){toast('Chọn danh mục','err');return}
+    var now=Date.now();
+    if(eId){var p=findPr(eId);if(p){p.name=name;p.category=category;p.device=device;p.ai=ai;p.section=section;p.content=content;p.note=note;p.updated=now;toast('Đã cập nhật','ok')}else{toast('Không tìm thấy','err');return}}
+    else{prompts.push({id:uid(),name:name,category:category,device:device,ai:ai,section:section,content:content,note:note,created:now,updated:now});toast('Đã thêm prompt','ok')}
+    save();renderCats();render();closeMo('mPr');
+}
+function viewPr(id){
+    var p=findPr(id);if(!p)return;var cat=findCat(p.category);
+    $('vwT').textContent=p.name;
+    var dvTx=p.device==='pc'?'PC':p.device==='phone'?'Phone':'Cả hai';
+    var aiH=p.ai?'<span class="tag tag-ai">'+esc(p.ai)+'</span>':'';
+    var secH=p.section?'<span class="tag tag-sec">'+esc(p.section)+'</span>':'';
+    $('vwM').innerHTML='<span class="card-tag" style="border-left:2px solid '+(cat?cat.color:'#555')+';padding-left:6px">'+esc(cat?cat.name:'—')+'</span>'+secH+aiH+'<span class="tag tag-pc">'+dvTx+'</span><span class="card-dt">'+fmtD(p.created)+'</span>';
+    $('vwC').textContent=p.content;
+    if(p.note){$('vwNT').textContent=p.note;$('vwN').style.display=''}else{$('vwN').style.display='none'}
+    $('vwEd').onclick=function(){editPr(id)};$('vwCp').onclick=function(){copyPr(id)};
+    openMo('mVw');
+}
+function copyPr(id){
+    var p=findPr(id);if(!p)return;
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(p.content).then(function(){toast('Đã sao chép','ok')}).catch(function(){fbCp(p.content)})}else fbCp(p.content);
+}
+function fbCp(t){var ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-9999px;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')?toast('Đã sao chép','ok'):toast('Lỗi','err')}catch(e){toast('Lỗi','err')}document.body.removeChild(ta)}
 
-    function getCatItems(){
-        return document.querySelectorAll('.cat-i[data-cat-id]');
-    }
+// ===== TRASH =====
+function delPr(id){
+    var p=findPr(id);if(!p)return;
+    $('cfTx').textContent='Xóa "'+trn(p.name,30)+'"?';$('cfSub').textContent='Prompt sẽ được chuyển vào thùng rác.';
+    var cfb=$('cfBtn');cfb.textContent='Xóa';cfb.className='btn btn-d';
+    cfb.onclick=function(){
+        var idx=-1;for(var i=0;i<prompts.length;i++)if(prompts[i].id===id){idx=i;break}
+        if(idx!==-1){var item=prompts.splice(idx,1)[0];item.deletedAt=Date.now();trash.push(item)}
+        save();renderCats();render();closeMo('mCf');toast('Đã chuyển vào thùng rác','ok');
+    };openMo('mCf');
+}
+function restorePr(id){
+    var idx=-1;for(var i=0;i<trash.length;i++)if(trash[i].id===id){idx=i;break}
+    if(idx===-1)return;
+    var item=trash.splice(idx,1)[0];delete item.deletedAt;
+    // Ensure category exists
+    if(!findCat(item.category)){if(cats.length>0)item.category=cats[0].id;else{var fid=uid();cats.push({id:fid,name:'Khôi phục',color:'#06b6d4',sections:[]});item.category=fid}}
+    prompts.push(item);save();renderCats();render();toast('Đã khôi phục','ok');
+}
+function permDel(id){
+    var p=findTrash(id);if(!p)return;
+    $('cfTx').textContent='Xóa vĩnh viễn "'+trn(p.name,25)+'"?';$('cfSub').textContent='Không thể khôi phục sau khi xóa.';
+    var cfb=$('cfBtn');cfb.textContent='Xóa vĩnh viễn';cfb.className='btn btn-d';
+    cfb.onclick=function(){trash=trash.filter(function(x){return x.id!==id});save();renderCats();render();closeMo('mCf');toast('Đã xóa vĩnh viễn','ok')};
+    openMo('mCf');
+}
 
-    function clearDragStyles(){
-        var items=getCatItems();
-        for(var i=0;i<items.length;i++){
-            items[i].classList.remove('drag-over','drag-over-below','dragging');
-        }
-    }
+document.addEventListener('keydown',function(e){
+    if(e.target.id==='pCont'&&e.key==='Tab'){e.preventDefault();var ta=e.target,s=ta.selectionStart,en=ta.selectionEnd;ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+2}
+    if((e.ctrlKey||e.metaKey)&&e.key==='s'&&$('mPr').classList.contains('show')){e.preventDefault();savePr()}
+});
 
-    // ---- MOUSE DRAG ----
-    function onDragStart(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var gripEl=e.currentTarget;
-        var catEl=gripEl.closest('.cat-i');
-        var catId=catEl.getAttribute('data-cat-id');
-        drag.active=true;
-        drag.catId=catId;
-        drag.startIdx=getCatIdx(catId);
-        catEl.classList.add('dragging');
+function init(){load();renderCats();renderAis();updSecFilter();render();updTb();updCatSel();updAiSel()}
 
-        document.addEventListener('mousemove',onDragMove);
-        document.addEventListener('mouseup',onDragEnd);
-    }
-
-    function onDragMove(e){
-        if(!drag.active) return;
-        clearHighlights();
-        var target=getDropTarget(e.clientX,e.clientY);
-        if(target&&target.id!==drag.catId){
-            var rect=target.el.getBoundingClientRect();
-            var mid=rect.top+rect.height/2;
-            if(e.clientY<mid) target.el.classList.add('drag-over');
-            else target.el.classList.add('drag-over-below');
-        }
-    }
-
-    function onDragEnd(e){
-        if(!drag.active) return;
-        document.removeEventListener('mousemove',onDragMove);
-        document.removeEventListener('mouseup',onDragEnd);
-
-        var target=getDropTarget(e.clientX,e.clientY);
-        if(target&&target.id!==drag.catId){
-            var rect=target.el.getBoundingClientRect();
-            var mid=rect.top+rect.height/2;
-            var below=e.clientY>=mid;
-            moveCat(drag.catId,target.id,below);
-        }
-
-        clearDragStyles();
-        drag.active=false;
-        drag.catId=null;
-    }
-
-    function clearHighlights(){
-        var items=getCatItems();
-        for(var i=0;i<items.length;i++){
-            items[i].classList.remove('drag-over','drag-over-below');
-        }
-    }
-
-    function getDropTarget(x,y){
-        var items=getCatItems();
-        for(var i=0;i<items.length;i++){
-            var rect=items[i].getBoundingClientRect();
-            if(y>=rect.top&&y<=rect.bottom&&x>=rect.left&&x<=rect.right){
-                return {el:items[i],id:items[i].getAttribute('data-cat-id')};
-            }
-        }
-        return null;
-    }
-
-    // ---- TOUCH DRAG ----
-    function onTouchStart(e){
-        if(e.touches.length!==1) return;
-        e.preventDefault();
-        var touch=e.touches[0];
-        var gripEl=e.currentTarget;
-        var catEl=gripEl.closest('.cat-i');
-        var catId=catEl.getAttribute('data-cat-id');
-
-        drag.active=true;
-        drag.catId=catId;
-        drag.startIdx=getCatIdx(catId);
-        drag.touchId=touch.identifier;
-        catEl.classList.add('dragging');
-
-        // Create ghost
-        var ghost=document.createElement('div');
-        ghost.className='drag-ghost';
-        var cat=findCat(catId);
-        ghost.textContent=cat?cat.name:catId;
-        ghost.style.left=(touch.clientX+10)+'px';
-        ghost.style.top=(touch.clientY-15)+'px';
-        document.body.appendChild(ghost);
-        drag.ghost=ghost;
-
-        document.addEventListener('touchmove',onTouchMove,{passive:false});
-        document.addEventListener('touchend',onTouchEnd);
-        document.addEventListener('touchcancel',onTouchEnd);
-    }
-
-    function onTouchMove(e){
-        if(!drag.active) return;
-        e.preventDefault();
-        var touch=null;
-        for(var i=0;i<e.touches.length;i++){
-            if(e.touches[i].identifier===drag.touchId){touch=e.touches[i];break}
-        }
-        if(!touch) return;
-
-        if(drag.ghost){
-            drag.ghost.style.left=(touch.clientX+10)+'px';
-            drag.ghost.style.top=(touch.clientY-15)+'px';
-        }
-
-        clearHighlights();
-        var target=getDropTarget(touch.clientX,touch.clientY);
-        if(target&&target.id!==drag.catId){
-            var rect=target.el.getBoundingClientRect();
-            var mid=rect.top+rect.height/2;
-            if(touch.clientY<mid) target.el.classList.add('drag-over');
-            else target.el.classList.add('drag-over-below');
-        }
-
-        // Auto scroll
-        var catList=$('catL');
-        var clRect=catList.getBoundingClientRect();
-        if(touch.clientY<clRect.top+30) catList.scrollTop-=5;
-        if(touch.clientY>clRect.bottom-30) catList.scrollTop+=5;
-    }
-
-    function onTouchEnd(e){
-        if(!drag.active) return;
-        document.removeEventListener('touchmove',onTouchMove);
-        document.removeEventListener('touchend',onTouchEnd);
-        document.removeEventListener('touchcancel',onTouchEnd);
-
-        var touch=null;
-        if(e.changedTouches){
-            for(var i=0;i<e.changedTouches.length;i++){
-                if(e.changedTouches[i].identifier===drag.touchId){touch=e.changedTouches[i];break}
-            }
-        }
-
-        if(touch){
-            var target=getDropTarget(touch.clientX,touch.clientY);
-            if(target&&target.id!==drag.catId){
-                var rect=target.el.getBoundingClientRect();
-                var mid=rect.top+rect.height/2;
-                var below=touch.clientY>=mid;
-                moveCat(drag.catId,target.id,below);
-            }
-        }
-
-        if(drag.ghost&&drag.ghost.parentNode){
-            drag.ghost.parentNode.removeChild(drag.ghost);
-        }
-        clearDragStyles();
-        drag.active=false;
-        drag.catId=null;
-        drag.ghost=null;
-        drag.touchId=null;
-    }
-
-    function moveCat(fromId,toId,below){
-        var fromIdx=getCatIdx(fromId);
-        var toIdx=getCatIdx(toId);
-        if(fromIdx===-1||toIdx===-1||fromIdx===toIdx) return;
-
-        var item=cats.splice(fromIdx,1)[0];
-        var newToIdx=getCatIdx(toId);
-        if(newToIdx===-1) newToIdx=cats.length;
-        if(below) newToIdx++;
-        cats.splice(newToIdx,0,item);
-
-        save();
-        renderCats();
-        updCatSel();
-        toast('Đã sắp xếp lại','ok');
-    }
-
-    function renderStats(){
-        var pc=0,ph=0,bt=0;
-        for(var i=0;i<prompts.length;i++){if(prompts[i].device==='pc')pc++;else if(prompts[i].device==='phone')ph++;else bt++}
-        $('sts').innerHTML='Tổng '+prompts.length+' &middot; PC '+pc+' &middot; Phone '+ph+' &middot; Cả hai '+bt;
-    }
-    function selCat(id){aCat=id;renderCats();render();updTb();closeSbM()}
-    function devFilter(dv){
-        aDev=dv;var bs=document.querySelectorAll('.seg-b');
-        for(var i=0;i<bs.length;i++)bs[i].classList.toggle('on',bs[i].getAttribute('data-dv')===dv);
-        render();
-    }
-    function doSearch(){sQ=($('sInput').value||'').trim().toLowerCase();render()}
-
-    function getF(){
-        var list=[];
-        for(var i=0;i<prompts.length;i++){
-            var p=prompts[i];
-            if(aCat!=='all'&&p.category!==aCat)continue;
-            if(aDev!=='all'&&p.device!==aDev&&p.device!=='both')continue;
-            if(aAi!=='all'&&(p.ai||'')!==aAi)continue;
-            if(sQ){var nm=(p.name||'').toLowerCase(),ct=(p.content||'').toLowerCase(),nt=(p.note||'').toLowerCase(),ai=(p.ai||'').toLowerCase();if(nm.indexOf(sQ)===-1&&ct.indexOf(sQ)===-1&&nt.indexOf(sQ)===-1&&ai.indexOf(sQ)===-1)continue}
-            list.push(p);
-        }
-        var sort=$('tbSort').value;
-        list.sort(function(a,b){switch(sort){case'oldest':return(a.created||0)-(b.created||0);case'az':return(a.name||'').localeCompare(b.name||'','vi');case'za':return(b.name||'').localeCompare(a.name||'','vi');default:return(b.created||0)-(a.created||0)}});
-        return list;
-    }
-
-    function render(){
-        var grid=$('grid'),list=getF();
-        $('tbCnt').textContent=list.length+' prompt';
-        if(list.length===0){grid.innerHTML='<div class="empty"><div class="empty-tx">'+(sQ?'Không tìm thấy kết quả':'Chưa có prompt nào')+'</div><div class="empty-sub">'+(sQ?'Thử từ khóa khác':'Bấm "+ Thêm prompt" để bắt đầu')+'</div></div>';return}
-        var parts=[];
-        for(var i=0;i<list.length;i++){
-            var p=list[i],cat=findCat(p.category),cn=cat?cat.name:'—',cc=cat?cat.color:'#555';
-            var dv='';
-            if(p.device==='pc')dv='<span class="tag tag-pc">PC</span>';
-            else if(p.device==='phone')dv='<span class="tag tag-ph">PHONE</span>';
-            else dv='<span class="tag tag-bt">ALL</span>';
-            var ai=p.ai?'<span class="tag tag-ai">'+esc(p.ai)+'</span>':'';
-            parts.push('<div class="card"><div class="card-h"><div class="card-t">'+esc(p.name)+'</div><div class="tags">'+ai+dv+'</div></div><div class="card-p">'+esc(p.content)+'</div><div class="card-m"><span class="card-tag" style="border-left:2px solid '+cc+';padding-left:6px">'+esc(cn)+'</span><span class="card-dt">'+fmtD(p.created)+'</span></div><div class="card-act"><button class="btn btn-s" onclick="App.view(\''+p.id+'\')">Xem</button><button class="btn btn-s" onclick="App.copy(\''+p.id+'\')">Chép</button><button class="btn btn-s" onclick="App.editPr(\''+p.id+'\')">Sửa</button><button class="btn btn-s btn-d" onclick="App.delPr(\''+p.id+'\')">Xóa</button></div></div>');
-        }
-        grid.innerHTML=parts.join('');
-    }
-    function updTb(){$('tbCat').textContent=aCat==='all'?'Tất cả':(findCat(aCat)||{}).name||'Tất cả'}
-    function findCat(id){for(var i=0;i<cats.length;i++)if(cats[i].id===id)return cats[i];return null}
-    function findPr(id){for(var i=0;i<prompts.length;i++)if(prompts[i].id===id)return prompts[i];return null}
-    function updCatSel(){var s=$('pCat'),h='';for(var i=0;i<cats.length;i++)h+='<option value="'+cats[i].id+'">'+esc(cats[i].name)+'</option>';s.innerHTML=h}
-
-    function openCatAdd(){$('mCtT').textContent='Thêm danh mục';$('eCatId').value='';$('cName').value='';$('cColor').value='#635bff';openMo('mCt');setTimeout(function(){$('cName').focus()},100)}
-    function editCat(id){var c=findCat(id);if(!c)return;$('mCtT').textContent='Sửa danh mục';$('eCatId').value=id;$('cName').value=c.name;$('cColor').value=c.color;openMo('mCt');setTimeout(function(){$('cName').focus()},100)}
-    function saveCat(){
-        var eId=($('eCatId').value||'').trim(),name=($('cName').value||'').trim(),color=$('cColor').value;
-        if(!name){toast('Nhập tên danh mục','err');$('cName').focus();return}
-        for(var i=0;i<cats.length;i++)if(cats[i].name.toLowerCase()===name.toLowerCase()&&cats[i].id!==eId){toast('Tên đã tồn tại','err');$('cName').focus();return}
-        if(eId){var c=findCat(eId);if(c){c.name=name;c.color=color;toast('Đã cập nhật','ok')}}
-        else{cats.push({id:uid(),name:name,color:color});toast('Đã thêm danh mục','ok')}
-        save();renderCats();updCatSel();updTb();closeMo('mCt');
-    }
-    function delCat(id){
-        var c=findCat(id);if(!c)return;
-        var count=0;for(var i=0;i<prompts.length;i++)if(prompts[i].category===id)count++;
-        $('cfTx').textContent='Xóa "'+trn(c.name,25)+'"?';
-        $('cfSub').textContent=count>0?count+' prompt sẽ chuyển sang danh mục khác.':'Không thể hoàn tác.';
-        var cfb=$('cfBtn');cfb.textContent='Xóa';cfb.className='btn btn-d';
-        cfb.onclick=function(){
-            if(count>0){var fb=null;for(var j=0;j<cats.length;j++)if(cats[j].id!==id){fb=cats[j].id;break}if(!fb){fb=uid();cats.push({id:fb,name:'Khác',color:'#06b6d4'})}for(var k=0;k<prompts.length;k++)if(prompts[k].category===id)prompts[k].category=fb}
-            cats=cats.filter(function(x){return x.id!==id});if(aCat===id)aCat='all';
-            save();renderCats();render();updTb();updCatSel();closeMo('mCf');toast('Đã xóa','ok');
-        };openMo('mCf');
-    }
-
-    function openAdd(){
-        $('mPrT').textContent='Thêm prompt mới';$('eId').value='';$('pName').value='';$('pCont').value='';$('pDev').value='both';$('pNote').value='';
-        updCatSel();updAiSel();$('pAi').value='';
-        if(aCat!=='all')$('pCat').value=aCat;
-        if(aAi!=='all')$('pAi').value=aAi;
-        openMo('mPr');setTimeout(function(){$('pName').focus()},100);
-    }
-    function editPr(id){
-        var p=findPr(id);if(!p)return;
-        $('mPrT').textContent='Sửa prompt';$('eId').value=id;$('pName').value=p.name;$('pCont').value=p.content;$('pDev').value=p.device||'both';$('pNote').value=p.note||'';
-        updCatSel();updAiSel();$('pCat').value=p.category;$('pAi').value=p.ai||'';
-        closeMo('mVw');openMo('mPr');setTimeout(function(){$('pName').focus()},100);
-    }
-    function savePr(){
-        var eId=($('eId').value||'').trim(),name=($('pName').value||'').trim(),category=$('pCat').value,device=$('pDev').value,ai=$('pAi').value||'',content=($('pCont').value||'').trim(),note=($('pNote').value||'').trim();
-        if(!name){toast('Nhập tên prompt','err');$('pName').focus();return}
-        if(!content){toast('Nhập nội dung','err');$('pCont').focus();return}
-        if(!category||!findCat(category)){toast('Chọn danh mục','err');return}
-        var now=Date.now();
-        if(eId){var p=findPr(eId);if(p){p.name=name;p.category=category;p.device=device;p.ai=ai;p.content=content;p.note=note;p.updated=now;toast('Đã cập nhật','ok')}else{toast('Không tìm thấy','err');return}}
-        else{prompts.push({id:uid(),name:name,category:category,device:device,ai:ai,content:content,note:note,created:now,updated:now});toast('Đã thêm prompt','ok')}
-        save();renderCats();render();closeMo('mPr');
-    }
-    function viewPr(id){
-        var p=findPr(id);if(!p)return;var cat=findCat(p.category);
-        $('vwT').textContent=p.name;
-        var dvTx=p.device==='pc'?'PC':p.device==='phone'?'Phone':'Cả hai';
-        var aiH=p.ai?'<span class="tag tag-ai">'+esc(p.ai)+'</span>':'';
-        $('vwM').innerHTML='<span class="card-tag" style="border-left:2px solid '+(cat?cat.color:'#555')+';padding-left:6px">'+esc(cat?cat.name:'—')+'</span>'+aiH+'<span class="tag tag-pc">'+dvTx+'</span><span class="card-dt">'+fmtD(p.created)+'</span>';
-        $('vwC').textContent=p.content;
-        if(p.note){$('vwNT').textContent=p.note;$('vwN').style.display='block'}else{$('vwN').style.display='none'}
-        $('vwEd').onclick=function(){editPr(id)};$('vwCp').onclick=function(){copyPr(id)};
-        openMo('mVw');
-    }
-    function copyPr(id){
-        var p=findPr(id);if(!p)return;
-        if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(p.content).then(function(){toast('Đã sao chép','ok')}).catch(function(){fbCp(p.content)})}else fbCp(p.content);
-    }
-    function fbCp(t){var ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-9999px;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')?toast('Đã sao chép','ok'):toast('Lỗi sao chép','err')}catch(e){toast('Lỗi sao chép','err')}document.body.removeChild(ta)}
-    function delPr(id){
-        var p=findPr(id);if(!p)return;
-        $('cfTx').textContent='Xóa "'+trn(p.name,30)+'"?';$('cfSub').textContent='Không thể hoàn tác.';
-        var cfb=$('cfBtn');cfb.textContent='Xóa';cfb.className='btn btn-d';
-        cfb.onclick=function(){prompts=prompts.filter(function(x){return x.id!==id});save();renderCats();render();closeMo('mCf');toast('Đã xóa','ok')};
-        openMo('mCf');
-    }
-
-    document.addEventListener('keydown',function(e){
-        if(e.target.id==='pCont'&&e.key==='Tab'){e.preventDefault();var ta=e.target,s=ta.selectionStart,en=ta.selectionEnd;ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+2}
-        if((e.ctrlKey||e.metaKey)&&e.key==='s'&&$('mPr').classList.contains('show')){e.preventDefault();savePr()}
-    });
-
-    function init(){load();renderCats();renderAis();render();updTb();updCatSel();updAiSel()}
-
-    window.App={
-        toggleSb:toggleSb,selCat:selCat,devFilter:devFilter,aiFilter:aiFilter,addAi:addAi,delAi:delAi,
-        search:function(){clearTimeout(_st);_st=setTimeout(doSearch,200)},
-        render:render,openAdd:openAdd,openCatAdd:openCatAdd,editCat:editCat,delCat:delCat,saveCat:saveCat,
-        savePr:savePr,editPr:editPr,view:viewPr,copy:copyPr,delPr:delPr,openMo:openMo,closeMo:closeMo
-    };
-    init();
+window.App={
+    toggleSb:toggleSb,selCat:selCat,devFilter:devFilter,aiFilter:aiFilter,addAi:addAi,delAi:delAi,
+    search:function(){clearTimeout(_st);_st=setTimeout(doSearch,200)},
+    render:render,openAdd:openAdd,openCatAdd:openCatAdd,editCat:editCat,delCat:delCat,saveCat:saveCat,
+    savePr:savePr,editPr:editPr,view:viewPr,copy:copyPr,delPr:delPr,
+    restore:restorePr,permDel:permDel,
+    openMo:openMo,closeMo:closeMo,syncColor:syncColor,
+    openSecMo:openSecMo,addSec:addSec,delSec:delSec,updSecSel:updSecSel
+};
+init();
 })();
 </script>
 </body>
