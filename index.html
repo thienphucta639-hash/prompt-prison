@@ -13,9 +13,7 @@
             --ac:#635bff;--ac2:#8b83ff;--ac3:#a78bfa;
             --gn:#10b981;--rd:#ef4444;
             --g1:linear-gradient(135deg,#635bff,#a78bfa);
-            --g2:linear-gradient(135deg,#f472b6,#c084fc);
-            --r:8px;
-            --tr:all .2s ease
+            --r:8px;--tr:all .2s ease
         }
         html{font-size:15px}
         body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;min-height:100dvh;line-height:1.5;overflow:hidden}
@@ -40,9 +38,6 @@
         .btn-d:hover{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.4)}
         .btn-s{padding:3px 8px;font-size:.75rem}
         .btn-g{background:var(--gn);border-color:transparent;color:#fff}
-        .btn-g:hover{box-shadow:0 4px 12px rgba(16,185,129,.25)}
-        .btn-ghost{background:transparent;border-color:transparent}
-        .btn-ghost:hover{background:var(--s2)}
 
         .layout{display:flex;height:calc(100vh - 48px);height:calc(100dvh - 48px)}
 
@@ -50,7 +45,7 @@
         .sb-sec{padding:10px 10px 6px}
         .sb-t{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--tx3);margin-bottom:4px;padding:0 6px;font-weight:600}
         .sb-search{position:relative}
-        .sb-search input{width:100%;padding:7px 10px 7px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);font-size:.82rem;outline:none;transition:var(--tr)}
+        .sb-search input{width:100%;padding:7px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);font-size:.82rem;outline:none;transition:var(--tr)}
         .sb-search input::placeholder{color:var(--tx3)}
         .sb-search input:focus{border-color:var(--ac);box-shadow:0 0 0 2px rgba(99,91,255,.1)}
 
@@ -61,7 +56,7 @@
 
         .ai-sec{padding:4px 10px 8px;border-bottom:1px solid var(--bd)}
         .ai-list{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px}
-        .ai-tag{padding:2px 7px;border:1px solid var(--bd);border-radius:5px;font-size:.68rem;cursor:pointer;transition:var(--tr);color:var(--tx3);background:transparent;font-weight:500;letter-spacing:.01em}
+        .ai-tag{padding:2px 7px;border:1px solid var(--bd);border-radius:5px;font-size:.68rem;cursor:pointer;transition:var(--tr);color:var(--tx3);background:transparent;font-weight:500}
         .ai-tag:hover{border-color:var(--bd2);color:var(--tx2);transform:scale(1.03)}
         .ai-tag.on{background:var(--ac);border-color:var(--ac);color:#fff}
         .ai-tag .x{margin-left:3px;opacity:.5;cursor:pointer;font-size:.6rem}
@@ -73,18 +68,30 @@
         .ai-abtn:hover{background:var(--ac);color:#fff;border-color:var(--ac)}
 
         .cat-list{flex:1;overflow-y:auto;padding:4px 6px 6px}
-        .cat-i{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:.82rem;transition:var(--tr);user-select:none;color:var(--tx2)}
-        .cat-i:hover{background:var(--s2);color:var(--tx);transform:translateX(2px)}
+        .cat-i{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:.82rem;transition:background .15s,color .15s,box-shadow .15s;user-select:none;color:var(--tx2);position:relative}
+        .cat-i:hover{background:var(--s2);color:var(--tx)}
         .cat-i.on{background:rgba(99,91,255,.08);color:var(--ac2)}
+        .cat-i.drag-over{box-shadow:0 -2px 0 0 var(--ac) inset}
+        .cat-i.drag-over-below{box-shadow:0 2px 0 0 var(--ac) inset}
+        .cat-i.dragging{opacity:.4;background:var(--s3)}
+        .cat-grip{cursor:grab;color:var(--tx3);font-size:.7rem;padding:2px;display:flex;align-items:center;flex-shrink:0;opacity:0;transition:opacity .15s}
+        .cat-i:hover .cat-grip{opacity:1}
+        .cat-grip:active{cursor:grabbing}
         .cat-d{width:6px;height:6px;border-radius:2px;flex-shrink:0;transition:transform .2s}
         .cat-i:hover .cat-d{transform:scale(1.4)}
         .cat-n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
         .cat-c{font-size:.68rem;color:var(--tx3);min-width:16px;text-align:right}
         .cat-i.on .cat-c{color:var(--ac)}
-        .cat-a{display:flex;gap:1px;opacity:0;transition:opacity .15s}
+        .cat-a{display:flex;gap:1px;opacity:0;transition:opacity .15s;flex-shrink:0}
         .cat-i:hover .cat-a{opacity:1}
         .cat-ab{background:none;border:none;color:var(--tx3);cursor:pointer;padding:2px 3px;font-size:.65rem;border-radius:3px;transition:var(--tr)}
         .cat-ab:hover{color:var(--tx);background:var(--s3)}
+
+        /* Drag placeholder */
+        .drag-placeholder{height:32px;border:1px dashed var(--ac);border-radius:6px;margin:2px 0;background:rgba(99,91,255,.04);transition:all .15s}
+
+        /* Touch drag ghost */
+        .drag-ghost{position:fixed;z-index:9999;pointer-events:none;background:var(--s2);border:1px solid var(--ac);border-radius:6px;padding:6px 10px;font-size:.82rem;color:var(--ac2);box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:.9;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
         .stats{padding:6px 12px;border-top:1px solid var(--bd);font-size:.65rem;color:var(--tx3);display:flex;gap:10px}
 
@@ -99,7 +106,7 @@
         .grid{flex:1;overflow-y:auto;padding:12px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px;align-content:start}
 
         .card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;transition:var(--tr);position:relative}
-        .card::after{content:'';position:absolute;inset:-1px;border-radius:10px;background:var(--g1);opacity:0;transition:opacity .3s;z-index:-1;padding:1px}
+        .card::after{content:'';position:absolute;inset:-1px;border-radius:10px;background:var(--g1);opacity:0;transition:opacity .3s;z-index:-1}
         .card:hover{border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
         .card:hover::after{opacity:.15}
         .card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
@@ -169,6 +176,7 @@
             .h-right .hm{display:none}
             .mo-box{max-height:92vh;max-height:92dvh}
             .mo{padding:8px}
+            .cat-grip{opacity:.7}
         }
         @media(max-width:480px){html{font-size:14px}}
         @media(min-width:1400px){.grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}}
@@ -183,7 +191,7 @@
     </div>
     <div class="h-right">
         <button class="btn btn-p" onclick="App.openAdd()">+ <span class="hm">Thêm prompt</span></button>
-        <button class="btn" onclick="App.openCatAdd()"><span class="hm">Thêm danh mục</span><span class="menu-t" style="display:inline;font-size:.8rem;padding:0">+</span></button>
+        <button class="btn" onclick="App.openCatAdd()"><span class="hm">Thêm danh mục</span></button>
     </div>
 </header>
 
@@ -194,14 +202,12 @@
                 <input type="text" id="sInput" placeholder="Tìm kiếm..." oninput="App.search()" autocomplete="off">
             </div>
         </div>
-
         <div style="padding:2px 10px 0"><div class="sb-t">Thiết bị</div></div>
         <div class="seg">
             <button class="seg-b on" data-dv="all" onclick="App.devFilter('all')">Tất cả</button>
             <button class="seg-b" data-dv="pc" onclick="App.devFilter('pc')">PC</button>
             <button class="seg-b" data-dv="phone" onclick="App.devFilter('phone')">Phone</button>
         </div>
-
         <div class="ai-sec">
             <div class="sb-t">Agent AI</div>
             <div class="ai-list" id="aiList"></div>
@@ -210,8 +216,7 @@
                 <button class="ai-abtn" onclick="App.addAi()">Thêm</button>
             </div>
         </div>
-
-        <div style="padding:6px 10px 2px"><div class="sb-t">Danh mục</div></div>
+        <div style="padding:6px 10px 2px"><div class="sb-t">Danh mục <span style="font-size:.55rem;color:var(--tx3);text-transform:none;letter-spacing:0;font-weight:400">kéo để sắp xếp</span></div></div>
         <div class="cat-list" id="catL"></div>
         <div class="stats" id="sts"></div>
     </aside>
@@ -290,9 +295,7 @@
         <div class="mo-b">
             <div class="card-m" id="vwM"></div>
             <div class="vc" id="vwC"></div>
-            <div id="vwN" style="font-size:.78rem;color:var(--tx3);display:none">
-                Ghi chú: <span id="vwNT"></span>
-            </div>
+            <div id="vwN" style="font-size:.78rem;color:var(--tx3);display:none">Ghi chú: <span id="vwNT"></span></div>
         </div>
         <div class="mo-f">
             <button class="btn" onclick="App.closeMo('mVw')">Đóng</button>
@@ -373,6 +376,9 @@
     var cats=[],prompts=[],ais=[];
     var aCat='all',aDev='all',aAi='all',sQ='',_st=null;
 
+    // Drag state
+    var drag={active:false,catId:null,startIdx:-1,ghost:null,touchId:null};
+
     function $(id){return document.getElementById(id)}
     function uid(){return 'p'+Date.now().toString(36)+Math.random().toString(36).substr(2,6)}
     function esc(t){if(!t)return'';var d=document.createElement('div');d.textContent=t;return d.innerHTML}
@@ -405,12 +411,13 @@
     function toggleSb(){$('sb').classList.toggle('open');$('sbOv').classList.toggle('show')}
     function closeSbM(){if(window.innerWidth<=768){$('sb').classList.remove('open');$('sbOv').classList.remove('show')}}
 
+    // ===== AI =====
     function renderAis(){
         var l=$('aiList');
         var h='<span class="ai-tag'+(aAi==='all'?' on':'')+'" onclick="App.aiFilter(\'all\')">Tất cả</span>';
         for(var i=0;i<ais.length;i++){
-            var a=ais[i],isOn=aAi===a;
-            h+='<span class="ai-tag'+(isOn?' on':'')+'" onclick="App.aiFilter(\''+esc(a)+'\')">'+esc(a)+
+            var a=ais[i];
+            h+='<span class="ai-tag'+(aAi===a?' on':'')+'" onclick="App.aiFilter(\''+esc(a)+'\')">'+esc(a)+
                 '<span class="x" onclick="event.stopPropagation();App.delAi(\''+esc(a)+'\')">✕</span></span>';
         }
         l.innerHTML=h;
@@ -418,7 +425,6 @@
     function addAi(){
         var inp=$('aiInput'),val=(inp.value||'').trim().toUpperCase();
         if(!val){toast('Nhập tên AI','err');inp.focus();return}
-        if(val.length>30){toast('Tên quá dài','err');return}
         for(var i=0;i<ais.length;i++)if(ais[i].toUpperCase()===val){toast('AI đã tồn tại','err');inp.focus();return}
         ais.push(val);inp.value='';save();renderAis();updAiSel();toast('Đã thêm '+val,'ok');
     }
@@ -440,16 +446,233 @@
         s.innerHTML=h;
     }
 
+    // ===== CATEGORIES =====
     function renderCats(){
         var l=$('catL'),counts={},total=prompts.length;
         for(var i=0;i<prompts.length;i++)counts[prompts[i].category]=(counts[prompts[i].category]||0)+1;
         var h='<div class="cat-i'+(aCat==='all'?' on':'')+'" onclick="App.selCat(\'all\')"><div class="cat-d" style="background:#555"></div><div class="cat-n">Tất cả</div><div class="cat-c">'+total+'</div></div>';
         for(var j=0;j<cats.length;j++){
             var c=cats[j],cnt=counts[c.id]||0;
-            h+='<div class="cat-i'+(aCat===c.id?' on':'')+'" onclick="App.selCat(\''+c.id+'\')"><div class="cat-d" style="background:'+c.color+'"></div><div class="cat-n">'+esc(c.name)+'</div><div class="cat-c">'+cnt+'</div><div class="cat-a"><button class="cat-ab" onclick="event.stopPropagation();App.editCat(\''+c.id+'\')">sửa</button><button class="cat-ab" onclick="event.stopPropagation();App.delCat(\''+c.id+'\')">xóa</button></div></div>';
+            h+='<div class="cat-i'+(aCat===c.id?' on':'')+'" data-cat-id="'+c.id+'" data-cat-idx="'+j+'">' +
+                '<span class="cat-grip" data-grip="'+c.id+'">⠿</span>' +
+                '<div class="cat-d" style="background:'+c.color+'"></div>' +
+                '<div class="cat-n" onclick="App.selCat(\''+c.id+'\')">'+esc(c.name)+'</div>' +
+                '<div class="cat-c">'+cnt+'</div>' +
+                '<div class="cat-a">' +
+                '<button class="cat-ab" onclick="event.stopPropagation();App.editCat(\''+c.id+'\')">sửa</button>' +
+                '<button class="cat-ab" onclick="event.stopPropagation();App.delCat(\''+c.id+'\')">xóa</button>' +
+                '</div></div>';
         }
-        l.innerHTML=h;renderStats();
+        l.innerHTML=h;
+        bindDrag();
+        renderStats();
     }
+
+    // ===== DRAG & DROP (Mouse + Touch) =====
+    function bindDrag(){
+        var items=document.querySelectorAll('.cat-i[data-cat-id]');
+        for(var i=0;i<items.length;i++){
+            var grip=items[i].querySelector('.cat-grip');
+            if(!grip) continue;
+
+            // Mouse
+            grip.addEventListener('mousedown',onDragStart);
+
+            // Touch
+            grip.addEventListener('touchstart',onTouchStart,{passive:false});
+        }
+    }
+
+    function getCatIdx(id){
+        for(var i=0;i<cats.length;i++) if(cats[i].id===id) return i;
+        return -1;
+    }
+
+    function getCatItems(){
+        return document.querySelectorAll('.cat-i[data-cat-id]');
+    }
+
+    function clearDragStyles(){
+        var items=getCatItems();
+        for(var i=0;i<items.length;i++){
+            items[i].classList.remove('drag-over','drag-over-below','dragging');
+        }
+    }
+
+    // ---- MOUSE DRAG ----
+    function onDragStart(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var gripEl=e.currentTarget;
+        var catEl=gripEl.closest('.cat-i');
+        var catId=catEl.getAttribute('data-cat-id');
+        drag.active=true;
+        drag.catId=catId;
+        drag.startIdx=getCatIdx(catId);
+        catEl.classList.add('dragging');
+
+        document.addEventListener('mousemove',onDragMove);
+        document.addEventListener('mouseup',onDragEnd);
+    }
+
+    function onDragMove(e){
+        if(!drag.active) return;
+        clearHighlights();
+        var target=getDropTarget(e.clientX,e.clientY);
+        if(target&&target.id!==drag.catId){
+            var rect=target.el.getBoundingClientRect();
+            var mid=rect.top+rect.height/2;
+            if(e.clientY<mid) target.el.classList.add('drag-over');
+            else target.el.classList.add('drag-over-below');
+        }
+    }
+
+    function onDragEnd(e){
+        if(!drag.active) return;
+        document.removeEventListener('mousemove',onDragMove);
+        document.removeEventListener('mouseup',onDragEnd);
+
+        var target=getDropTarget(e.clientX,e.clientY);
+        if(target&&target.id!==drag.catId){
+            var rect=target.el.getBoundingClientRect();
+            var mid=rect.top+rect.height/2;
+            var below=e.clientY>=mid;
+            moveCat(drag.catId,target.id,below);
+        }
+
+        clearDragStyles();
+        drag.active=false;
+        drag.catId=null;
+    }
+
+    function clearHighlights(){
+        var items=getCatItems();
+        for(var i=0;i<items.length;i++){
+            items[i].classList.remove('drag-over','drag-over-below');
+        }
+    }
+
+    function getDropTarget(x,y){
+        var items=getCatItems();
+        for(var i=0;i<items.length;i++){
+            var rect=items[i].getBoundingClientRect();
+            if(y>=rect.top&&y<=rect.bottom&&x>=rect.left&&x<=rect.right){
+                return {el:items[i],id:items[i].getAttribute('data-cat-id')};
+            }
+        }
+        return null;
+    }
+
+    // ---- TOUCH DRAG ----
+    function onTouchStart(e){
+        if(e.touches.length!==1) return;
+        e.preventDefault();
+        var touch=e.touches[0];
+        var gripEl=e.currentTarget;
+        var catEl=gripEl.closest('.cat-i');
+        var catId=catEl.getAttribute('data-cat-id');
+
+        drag.active=true;
+        drag.catId=catId;
+        drag.startIdx=getCatIdx(catId);
+        drag.touchId=touch.identifier;
+        catEl.classList.add('dragging');
+
+        // Create ghost
+        var ghost=document.createElement('div');
+        ghost.className='drag-ghost';
+        var cat=findCat(catId);
+        ghost.textContent=cat?cat.name:catId;
+        ghost.style.left=(touch.clientX+10)+'px';
+        ghost.style.top=(touch.clientY-15)+'px';
+        document.body.appendChild(ghost);
+        drag.ghost=ghost;
+
+        document.addEventListener('touchmove',onTouchMove,{passive:false});
+        document.addEventListener('touchend',onTouchEnd);
+        document.addEventListener('touchcancel',onTouchEnd);
+    }
+
+    function onTouchMove(e){
+        if(!drag.active) return;
+        e.preventDefault();
+        var touch=null;
+        for(var i=0;i<e.touches.length;i++){
+            if(e.touches[i].identifier===drag.touchId){touch=e.touches[i];break}
+        }
+        if(!touch) return;
+
+        if(drag.ghost){
+            drag.ghost.style.left=(touch.clientX+10)+'px';
+            drag.ghost.style.top=(touch.clientY-15)+'px';
+        }
+
+        clearHighlights();
+        var target=getDropTarget(touch.clientX,touch.clientY);
+        if(target&&target.id!==drag.catId){
+            var rect=target.el.getBoundingClientRect();
+            var mid=rect.top+rect.height/2;
+            if(touch.clientY<mid) target.el.classList.add('drag-over');
+            else target.el.classList.add('drag-over-below');
+        }
+
+        // Auto scroll
+        var catList=$('catL');
+        var clRect=catList.getBoundingClientRect();
+        if(touch.clientY<clRect.top+30) catList.scrollTop-=5;
+        if(touch.clientY>clRect.bottom-30) catList.scrollTop+=5;
+    }
+
+    function onTouchEnd(e){
+        if(!drag.active) return;
+        document.removeEventListener('touchmove',onTouchMove);
+        document.removeEventListener('touchend',onTouchEnd);
+        document.removeEventListener('touchcancel',onTouchEnd);
+
+        var touch=null;
+        if(e.changedTouches){
+            for(var i=0;i<e.changedTouches.length;i++){
+                if(e.changedTouches[i].identifier===drag.touchId){touch=e.changedTouches[i];break}
+            }
+        }
+
+        if(touch){
+            var target=getDropTarget(touch.clientX,touch.clientY);
+            if(target&&target.id!==drag.catId){
+                var rect=target.el.getBoundingClientRect();
+                var mid=rect.top+rect.height/2;
+                var below=touch.clientY>=mid;
+                moveCat(drag.catId,target.id,below);
+            }
+        }
+
+        if(drag.ghost&&drag.ghost.parentNode){
+            drag.ghost.parentNode.removeChild(drag.ghost);
+        }
+        clearDragStyles();
+        drag.active=false;
+        drag.catId=null;
+        drag.ghost=null;
+        drag.touchId=null;
+    }
+
+    function moveCat(fromId,toId,below){
+        var fromIdx=getCatIdx(fromId);
+        var toIdx=getCatIdx(toId);
+        if(fromIdx===-1||toIdx===-1||fromIdx===toIdx) return;
+
+        var item=cats.splice(fromIdx,1)[0];
+        var newToIdx=getCatIdx(toId);
+        if(newToIdx===-1) newToIdx=cats.length;
+        if(below) newToIdx++;
+        cats.splice(newToIdx,0,item);
+
+        save();
+        renderCats();
+        updCatSel();
+        toast('Đã sắp xếp lại','ok');
+    }
+
     function renderStats(){
         var pc=0,ph=0,bt=0;
         for(var i=0;i<prompts.length;i++){if(prompts[i].device==='pc')pc++;else if(prompts[i].device==='phone')ph++;else bt++}
